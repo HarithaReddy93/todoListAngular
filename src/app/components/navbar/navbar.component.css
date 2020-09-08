@@ -1,0 +1,11 @@
+.bg-blue{
+    background-image: linear-gradient(to right,rgb(36, 142, 230),rgb(213, 218, 221));
+    
+}
+a{
+    color: white!important;
+    font-weight: bold;
+}
+a:hover{
+    color: tomato !important;
+}

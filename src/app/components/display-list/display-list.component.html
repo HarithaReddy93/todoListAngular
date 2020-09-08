@@ -1,0 +1,79 @@
+
+
+<div class="container-fluid pt-5"  >
+    <h1>Available Todo list</h1> 
+      
+    <div class="row mx-auto " *ngIf='flag'>
+    
+    <div class="col-4 A ">
+      <label for="taskname">Task Name:</label>  <br> 
+      <label for="category">Category:</label> <br> 
+      <label for="Sdate">Start Date:</label> <br> 
+      <label for="Edate">End Date:</label> <br> 
+      <label for="description">Description:  </label> <br>
+      <label for="priority">Priority: </label>
+    
+    </div>
+    <div class="col B">
+      <input type="text" [(ngModel)]="taskname" placeholder="task name" >  <br>
+    
+      <select [(ngModel)]="firstValue"> 
+        <option *ngFor="let option of SelectOptions" [value]="option">
+           {{ option }}
+        </option>
+       </select>  <br> 
+       <input type="date" [(ngModel)]="Sdate" name="start date" id="Sdate">  <br>
+       <input type="date"  [(ngModel)]="Edate" name="end date" id="Edate">  <br>
+       <textarea [(ngModel)]="myTextarea"></textarea> 
+    
+       <mat-radio-group class="example-radio-group" [(ngModel)]="priority">
+        <mat-radio-button class="example-radio-button" *ngFor="let prioriti of priorities" [value]="prioriti">
+          {{prioriti}} 
+        </mat-radio-button>
+      </mat-radio-group>
+      
+      <!-- <div class="example-selected-value"> {{priority}}</div> -->
+      <!-- <input type="submit" value="Add List" (click)="addList()"> -->
+    <!-- <i type="submit" class="fas fa-user-plus fa-2x" (click)="addList()"></i> -->
+    
+      <!-- <input type="submit" value="Update List" *ngIf='flag' (click)="updateListfb()" > -->
+     <i type="submit" class="fas fa-user-edit fa-2x" *ngIf='flag' (click)="updateListfb()"></i>
+    
+    </div>
+    </div>
+    
+    <div class="row mt-5 mx-auto">
+        <table class="mx-auto">
+          <tr class="Theading">
+            <td>Serial No</td>
+            <td>Task Name</td>
+            <td>Category</td>
+            <td>Start Date</td>
+            <td>End Date</td>
+            <td>Description</td>
+            <td>Priority</td>
+            <td>Delete</td>
+            <td>Update/Edit</td>
+          </tr>
+          <tr *ngFor="let list of todolist | async; let num = index">
+            <td>{{num+1}}</td> 
+            <td>{{list.taskname}}</td>
+            <td>{{list.category}} </td>
+            <td>{{list.startDate | date}}</td>
+            <td>{{list.endDate | date}}</td>
+            <td>{{list.textArea}}</td>
+            <td>{{list.priority}}</td>
+            <td><i type="submit" class="fas fa-trash-alt fa-2x" (click)="deleteList(list)"></i></td>
+            <td><i type="submit" class="fas fa-user-edit fa-2x" (click)="updateList(list)" ></i></td>
+
+          </tr>
+        </table>
+    </div>
+
+    
+    </div>
+    
+    
+    
+    
+    
